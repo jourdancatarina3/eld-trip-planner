@@ -116,7 +116,7 @@ export default function LogSheet({
         </div>
       </header>
 
-      <div className="grid gap-x-6 gap-y-3 px-5 py-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-3 px-5 py-3 lg:grid-cols-4">
         <HeaderField label="From" value={log.from_location} />
         <HeaderField label="To" value={log.to_location} />
         <HeaderField
@@ -129,7 +129,7 @@ export default function LogSheet({
       <div className="overflow-x-auto px-2 pb-1" data-testid="log-grid-scroll">
         <svg
           viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
-          className="min-w-[880px]"
+          className="min-w-220"
           role="img"
           aria-label={`Duty status grid: ${ROWS.map(
             (row) =>
@@ -344,6 +344,14 @@ export default function LogSheet({
             y2={REMARKS_TOP}
             stroke="#0f172a"
             strokeWidth="1.2"
+          />
+          <line
+            x1={GRID_X}
+            y1={REMARKS_TOP + REMARKS_H}
+            x2={GRID_X + GRID_W}
+            y2={REMARKS_TOP + REMARKS_H}
+            stroke="#cbd5e1"
+            strokeWidth="1"
           />
           {log.remarks.map((remark, i) => (
             <g key={i}>
