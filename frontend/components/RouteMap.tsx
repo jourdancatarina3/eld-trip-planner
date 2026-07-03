@@ -15,7 +15,7 @@ const RouteMapInner = dynamic(() => import("./RouteMapInner"), {
 export default function RouteMap({ plan }: { plan: TripPlan }) {
   return (
     <div
-      className="h-80 w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm sm:h-[420px]"
+      className="h-80 w-full overflow-hidden rounded-2xl border border-slate-200 shadow-sm sm:h-105"
       data-testid="route-map"
     >
       <RouteMapInner plan={plan} />
