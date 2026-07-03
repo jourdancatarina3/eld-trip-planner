@@ -198,7 +198,15 @@ export default function TripForm({ onSubmit, loading }: Props) {
             Home-terminal time. Logs start from this moment.
           </p>
         </div>
-        <div className="flex items-end sm:col-span-2 md:col-span-1">
+        <div className="sm:col-span-2 md:col-span-1">
+          {/* Spacer matches the sibling fields' label so the button lines up
+              with the input boxes, not the helper text below them. */}
+          <span
+            className="mb-1.5 hidden text-sm font-medium md:block"
+            aria-hidden
+          >
+            &nbsp;
+          </span>
           <button
             type="submit"
             disabled={loading}
