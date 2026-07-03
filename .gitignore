@@ -6,6 +6,7 @@ venv/
 *.egg-info/
 db.sqlite3
 .env
+staticfiles/
 
 # Node
 node_modules/

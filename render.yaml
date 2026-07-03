@@ -1,0 +1,26 @@
+# Render Blueprint for the Django backend.
+# Render dashboard -> New -> Blueprint -> pick this repo. It reads this file
+# and provisions the free web service below. After the first deploy, set
+# CORS_ALLOWED_ORIGINS to your Vercel URL (see DEPLOY.md).
+services:
+  - type: web
+    name: eld-trip-planner-api
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput"
+    startCommand: "gunicorn config.wsgi:application --bind 0.0.0.0:$PORT"
+    healthCheckPath: /api/health/
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      # Fill in with your Vercel URL after the frontend is live, e.g.
+      # https://eld-trip-planner.vercel.app  (no trailing slash)
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
