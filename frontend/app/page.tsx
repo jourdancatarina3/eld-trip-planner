@@ -78,7 +78,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="print-hidden border-b border-slate-800 bg-slate-900">
+      <header className="print-hidden sticky top-0 z-50 border-b border-slate-800 bg-slate-900">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
           <div className="flex items-center gap-3">
             <span

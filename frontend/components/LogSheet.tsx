@@ -89,6 +89,18 @@ export default function LogSheet({
     0
   );
 
+  // Remark labels are drawn at 45°, so a long one extends diagonally below the
+  // grid. Grow the canvas height to fit the longest label instead of letting the
+  // card clip it. (~5px per char × sin 45° ≈ vertical drop of the rotated text.)
+  const longestRemark = log.remarks.reduce(
+    (max, r) => Math.max(max, `${r.location} — ${r.note}`.length),
+    0
+  );
+  const viewH = Math.max(
+    VIEW_H,
+    Math.ceil(REMARKS_TOP + 22 + longestRemark * 5 * Math.SQRT1_2 + 10)
+  );
+
   return (
     <article
       className="log-sheet-card overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
@@ -128,7 +140,7 @@ export default function LogSheet({
 
       <div className="overflow-x-auto px-2 pb-1" data-testid="log-grid-scroll">
         <svg
-          viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+          viewBox={`0 0 ${VIEW_W} ${viewH}`}
           className="min-w-220"
           role="img"
           aria-label={`Duty status grid: ${ROWS.map(

@@ -66,4 +66,14 @@ body {
     border: none !important;
     box-shadow: none !important;
   }
+  /* Let the duty grid scale down to the page instead of being clipped by the
+     on-screen horizontal scroll container. */
+  .log-sheet-card [data-testid="log-grid-scroll"] {
+    overflow: visible !important;
+  }
+  .log-sheet-card [data-testid="log-grid-scroll"] svg {
+    min-width: 0 !important;
+    width: 100% !important;
+    height: auto;
+  }
 }
